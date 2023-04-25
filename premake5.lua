@@ -1,15 +1,16 @@
 project "yaml-cpp"
-	kind "StaticLib"
-	language "C++"
+    kind "StaticLib"
+    language "C++"
+    
+    outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    targetdir ("%{wks.location}/Binaries/" .. outputdir .. "/%{prj.name}")
+    objdir ("%{wks.location}/Intermediate/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
 		"src/**.h",
 		"src/**.cpp",
-		
 		"include/**.h"
 	}
 
